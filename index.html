@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOPDES - Beranda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+:root{--green:#174a35;--green2:#21845a;--cream:#f5f8f5;--ink:#203128}
+body{background:var(--cream);color:var(--ink);padding-top:76px}
+.navbar{background:var(--green)}
+.navbar-brand{letter-spacing:1px}
+.hero{background:linear-gradient(120deg,rgba(12,53,36,.92),rgba(32,132,90,.78)),url('https://picsum.photos/1600/700?random=41') center/cover;color:white;border-radius:0 0 28px 28px}
+.section-title{font-weight:800;color:var(--green)}
+.product-card,.review-card,.content-card{border:0;border-radius:18px;overflow:hidden}
+.product-card img{height:210px;object-fit:cover}
+.product-card{transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #163b2b20!important}
+.btn-kopdes{background:var(--green2);color:#fff;border:0}
+.btn-kopdes:hover{background:var(--green);color:#fff}
+.price{color:var(--green2);font-weight:800}
+footer{background:#123526;color:#eaf4ee}
+.stars{color:#f4a623;letter-spacing:2px}
+.form-control,.form-select{padding:.75rem;border-radius:10px}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">KOPDES</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka navigasi"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">BERANDA</a></li>
+        <li class="nav-item"><a class="nav-link " href="barang.html">BARANG</a></li>
+        <li class="nav-item"><a class="nav-link " href="testimoni.html">TESTIMONI</a></li>
+        <li class="nav-item"><a class="nav-link " href="pesan.html">PESAN</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<header class="hero py-5">
+  <div class="container py-5">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <span class="badge text-bg-light text-success mb-3">Selamat datang di KOPDES</span>
+        <h1 class="display-4 fw-bold">Belanja kebutuhanmu jadi lebih mudah.</h1>
+        <p class="lead mt-3">Temukan barang pilihan dengan proses pemesanan yang sederhana dan nyaman.</p>
+        <a href="barang.html" class="btn btn-light btn-lg fw-semibold me-2">Lihat Barang</a>
+        <a href="pesan.html" class="btn btn-outline-light btn-lg">Pesan Sekarang</a>
+      </div>
+      <div class="col-lg-5"><img class="img-fluid rounded-4 shadow" src="https://picsum.photos/700/500?random=50" alt="Pilihan produk KOPDES"></div>
+    </div>
+  </div>
+</header>
+<section class="container py-5">
+  <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-2">
+    <div><p class="text-success fw-semibold mb-1">PILIHAN KAMI</p><h2 class="section-title mb-0">Produk Unggulan</h2></div>
+    <a href="barang.html" class="btn btn-outline-success">Lihat semua barang →</a>
+  </div>
+  <div class="row g-4">
+    <div class="col-sm-6 col-lg-3"><div class="card product-card shadow-sm h-100"><img src="https://picsum.photos/500/350?random=11" alt="Produk satu"><div class="card-body"><h5>Produk 1</h5><p class="price mb-3">Rp25.000</p><a href="pesan.html" class="btn btn-kopdes w-100">Pesan</a></div></div></div>
+    <div class="col-sm-6 col-lg-3"><div class="card product-card shadow-sm h-100"><img src="https://picsum.photos/500/350?random=12" alt="Produk dua"><div class="card-body"><h5>Produk 2</h5><p class="price mb-3">Rp50.000</p><a href="pesan.html" class="btn btn-kopdes w-100">Pesan</a></div></div></div>
+    <div class="col-sm-6 col-lg-3"><div class="card product-card shadow-sm h-100"><img src="https://picsum.photos/500/350?random=13" alt="Produk tiga"><div class="card-body"><h5>Produk 3</h5><p class="price mb-3">Rp75.000</p><a href="pesan.html" class="btn btn-kopdes w-100">Pesan</a></div></div></div>
+    <div class="col-sm-6 col-lg-3"><div class="card product-card shadow-sm h-100"><img src="https://picsum.photos/500/350?random=14" alt="Produk empat"><div class="card-body"><h5>Produk 4</h5><p class="price mb-3">Rp100.000</p><a href="pesan.html" class="btn btn-kopdes w-100">Pesan</a></div></div></div>
+  </div>
+</section>
+<section class="container pb-5">
+  <div class="row g-3">
+    <div class="col-md-4"><div class="bg-white rounded-4 p-4 h-100 shadow-sm"><h5>🛍️ Pilihan barang</h5><p class="mb-0 text-secondary">Lihat pilihan produk di satu halaman.</p></div></div>
+    <div class="col-md-4"><div class="bg-white rounded-4 p-4 h-100 shadow-sm"><h5>🧾 Pemesanan mudah</h5><p class="mb-0 text-secondary">Isi formulir dan lihat perkiraan total harga.</p></div></div>
+    <div class="col-md-4"><div class="bg-white rounded-4 p-4 h-100 shadow-sm"><h5>💬 Ulasan pelanggan</h5><p class="mb-0 text-secondary">Baca dan tambahkan testimoni.</p></div></div>
+  </div>
+</section>
+
+<footer class="mt-5 py-4"><div class="container text-center"><strong>KOPDES</strong><p class="mb-0 small">Belanja mudah, nyaman, dan terpercaya.</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

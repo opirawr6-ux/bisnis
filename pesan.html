@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOPDES - Pemesanan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+:root{--green:#174a35;--green2:#21845a;--cream:#f5f8f5;--ink:#203128}
+body{background:var(--cream);color:var(--ink);padding-top:76px}
+.navbar{background:var(--green)}
+.navbar-brand{letter-spacing:1px}
+.hero{background:linear-gradient(120deg,rgba(12,53,36,.92),rgba(32,132,90,.78)),url('https://picsum.photos/1600/700?random=41') center/cover;color:white;border-radius:0 0 28px 28px}
+.section-title{font-weight:800;color:var(--green)}
+.product-card,.review-card,.content-card{border:0;border-radius:18px;overflow:hidden}
+.product-card img{height:210px;object-fit:cover}
+.product-card{transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #163b2b20!important}
+.btn-kopdes{background:var(--green2);color:#fff;border:0}
+.btn-kopdes:hover{background:var(--green);color:#fff}
+.price{color:var(--green2);font-weight:800}
+footer{background:#123526;color:#eaf4ee}
+.stars{color:#f4a623;letter-spacing:2px}
+.form-control,.form-select{padding:.75rem;border-radius:10px}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">KOPDES</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka navigasi"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">BERANDA</a></li>
+        <li class="nav-item"><a class="nav-link " href="barang.html">BARANG</a></li>
+        <li class="nav-item"><a class="nav-link " href="testimoni.html">TESTIMONI</a></li>
+        <li class="nav-item"><a class="nav-link active" href="pesan.html">PESAN</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="container py-5">
+  <div class="text-center mb-4"><p class="text-success fw-semibold mb-1">BELANJA SEKARANG</p><h1 class="section-title">Formulir Pemesanan</h1><p class="text-secondary">Lengkapi data untuk membuat ringkasan pesanan.</p></div>
+  <div class="card content-card shadow-sm mx-auto" style="max-width:780px"><div class="card-body p-4 p-md-5">
+    <form id="orderForm">
+      <div class="mb-3"><label for="nama" class="form-label">Nama lengkap</label><input id="nama" class="form-control" required placeholder="Masukkan nama kamu"></div>
+      <div class="mb-3"><label for="telepon" class="form-label">Nomor telepon / WhatsApp</label><input id="telepon" class="form-control" type="tel" required placeholder="Contoh: 081234567890"></div>
+      <div class="mb-3"><label for="alamat" class="form-label">Alamat pengiriman</label><textarea id="alamat" class="form-control" rows="3" required placeholder="Alamat lengkap"></textarea></div>
+      <div class="row g-3"><div class="col-md-8"><label for="produk" class="form-label">Pilih barang</label><select id="produk" class="form-select" required><option value="">-- Pilih barang --</option><option value="Produk 1" data-harga="25000">Produk 1 — Rp25.000</option><option value="Produk 2" data-harga="50000">Produk 2 — Rp50.000</option><option value="Produk 3" data-harga="75000">Produk 3 — Rp75.000</option><option value="Produk 4" data-harga="100000">Produk 4 — Rp100.000</option></select></div><div class="col-md-4"><label for="jumlah" class="form-label">Jumlah barang</label><input id="jumlah" class="form-control" type="number" min="1" value="1" required></div></div>
+      <div class="alert alert-success mt-4 d-flex justify-content-between"><span>Perkiraan total</span><strong id="total">Rp0</strong></div>
+      <button class="btn btn-kopdes btn-lg w-100" type="submit">Buat Ringkasan Pesanan</button>
+    </form>
+    <div id="hasil" class="mt-4" aria-live="polite"></div>
+    <p class="small text-secondary mt-3 mb-0">Demo front-end: pesanan belum dikirim ke penjual dan tidak tersimpan ke database.</p>
+  </div></div>
+</section>
+
+<footer class="mt-5 py-4"><div class="container text-center"><strong>KOPDES</strong><p class="mb-0 small">Belanja mudah, nyaman, dan terpercaya.</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const produk=document.getElementById('produk'), jumlah=document.getElementById('jumlah'), total=document.getElementById('total');
+const uang=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n);
+function hitung(){const h=Number(produk.selectedOptions[0]?.dataset.harga||0);total.textContent=uang(h*Math.max(1,Number(jumlah.value||1)));}
+produk.addEventListener('change',hitung);jumlah.addEventListener('input',hitung);
+const pilihan=new URLSearchParams(location.search).get('produk');if(pilihan){for(const op of produk.options){if(op.value===pilihan)produk.value=pilihan;}hitung();}
+document.getElementById('orderForm').addEventListener('submit',e=>{e.preventDefault();const h=Number(produk.selectedOptions[0].dataset.harga||0),q=Number(jumlah.value);if(!h){alert('Pilih barang terlebih dahulu.');return;}
+const hasil=document.getElementById('hasil');hasil.replaceChildren();const box=document.createElement('div');box.className='alert alert-info';
+const judul=document.createElement('h5');judul.textContent='Ringkasan pesanan';box.append(judul);
+[['Nama',document.getElementById('nama').value],['Telepon',document.getElementById('telepon').value],['Barang',produk.value],['Jumlah',String(q)],['Total',uang(h*q)],['Alamat',document.getElementById('alamat').value]].forEach(([k,v])=>{const p=document.createElement('p');p.className='mb-1';p.textContent=k+': '+v;box.append(p);});
+hasil.append(box);});
+hitung();
+</script>
+
+</body>
+</html>

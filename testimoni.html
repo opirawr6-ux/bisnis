@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOPDES - Testimoni</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+:root{--green:#174a35;--green2:#21845a;--cream:#f5f8f5;--ink:#203128}
+body{background:var(--cream);color:var(--ink);padding-top:76px}
+.navbar{background:var(--green)}
+.navbar-brand{letter-spacing:1px}
+.hero{background:linear-gradient(120deg,rgba(12,53,36,.92),rgba(32,132,90,.78)),url('https://picsum.photos/1600/700?random=41') center/cover;color:white;border-radius:0 0 28px 28px}
+.section-title{font-weight:800;color:var(--green)}
+.product-card,.review-card,.content-card{border:0;border-radius:18px;overflow:hidden}
+.product-card img{height:210px;object-fit:cover}
+.product-card{transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #163b2b20!important}
+.btn-kopdes{background:var(--green2);color:#fff;border:0}
+.btn-kopdes:hover{background:var(--green);color:#fff}
+.price{color:var(--green2);font-weight:800}
+footer{background:#123526;color:#eaf4ee}
+.stars{color:#f4a623;letter-spacing:2px}
+.form-control,.form-select{padding:.75rem;border-radius:10px}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">KOPDES</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka navigasi"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">BERANDA</a></li>
+        <li class="nav-item"><a class="nav-link " href="barang.html">BARANG</a></li>
+        <li class="nav-item"><a class="nav-link active" href="testimoni.html">TESTIMONI</a></li>
+        <li class="nav-item"><a class="nav-link " href="pesan.html">PESAN</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="container py-5">
+  <div class="text-center mb-5"><p class="text-success fw-semibold mb-1">CERITA PELANGGAN</p><h1 class="section-title">Testimoni</h1><p class="text-secondary">Pendapat pelanggan tentang pengalaman mereka di KOPDES.</p></div>
+  <div class="row g-4 mb-5" id="daftarTestimoni">
+    <div class="col-md-4"><article class="card review-card shadow-sm h-100"><div class="card-body p-4"><div class="stars mb-2">★★★★★</div><p>“Barangnya bagus dan proses belanjanya mudah.”</p><h6 class="mb-0">Andi</h6><small class="text-secondary">Pelanggan</small></div></article></div>
+    <div class="col-md-4"><article class="card review-card shadow-sm h-100"><div class="card-body p-4"><div class="stars mb-2">★★★★★</div><p>“Pelayanan ramah dan pilihan barangnya menarik.”</p><h6 class="mb-0">Siti</h6><small class="text-secondary">Pelanggan</small></div></article></div>
+    <div class="col-md-4"><article class="card review-card shadow-sm h-100"><div class="card-body p-4"><div class="stars mb-2">★★★★☆</div><p>“Website mudah digunakan dan tampilannya rapi.”</p><h6 class="mb-0">Budi</h6><small class="text-secondary">Pelanggan</small></div></article></div>
+  </div>
+  <div class="card content-card shadow-sm mx-auto" style="max-width:700px"><div class="card-body p-4 p-md-5">
+    <h2 class="h4 section-title mb-3">Bagikan Pengalamanmu</h2>
+    <form id="reviewForm"><div class="mb-3"><label for="namaReview" class="form-label">Nama</label><input id="namaReview" class="form-control" required placeholder="Nama kamu"></div>
+    <div class="mb-3"><label for="rating" class="form-label">Rating</label><select id="rating" class="form-select"><option value="5">★★★★★ — Sangat puas</option><option value="4">★★★★☆ — Puas</option><option value="3">★★★☆☆ — Cukup</option><option value="2">★★☆☆☆ — Kurang puas</option><option value="1">★☆☆☆☆ — Tidak puas</option></select></div>
+    <div class="mb-3"><label for="ulasan" class="form-label">Testimoni</label><textarea id="ulasan" class="form-control" rows="4" required placeholder="Tulis ulasan kamu..."></textarea></div>
+    <button class="btn btn-kopdes w-100" type="submit">Kirim Testimoni</button></form>
+    <p class="small text-secondary mt-3 mb-0">Testimoni baru tampil selama halaman ini terbuka. Penyimpanan permanen memerlukan database.</p>
+  </div></div>
+</section>
+
+<footer class="mt-5 py-4"><div class="container text-center"><strong>KOPDES</strong><p class="mb-0 small">Belanja mudah, nyaman, dan terpercaya.</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.getElementById('reviewForm').addEventListener('submit',e=>{e.preventDefault();
+const nama=document.getElementById('namaReview').value.trim(),rating=Number(document.getElementById('rating').value),ulasan=document.getElementById('ulasan').value.trim();
+const col=document.createElement('div');col.className='col-md-4';const card=document.createElement('article');card.className='card review-card shadow-sm h-100';const body=document.createElement('div');body.className='card-body p-4';
+const stars=document.createElement('div');stars.className='stars mb-2';stars.textContent='★'.repeat(rating)+'☆'.repeat(5-rating);
+const p=document.createElement('p');p.textContent='“'+ulasan+'”';const h=document.createElement('h6');h.className='mb-0';h.textContent=nama;const small=document.createElement('small');small.className='text-secondary';small.textContent='Pelanggan';
+body.append(stars,p,h,small);card.append(body);col.append(card);document.getElementById('daftarTestimoni').prepend(col);e.target.reset();});
+</script>
+
+</body>
+</html>
